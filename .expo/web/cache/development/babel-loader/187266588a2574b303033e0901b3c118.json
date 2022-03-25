@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { FAB } from \"./FAB\";\nexport { FAB };","map":{"version":3,"sources":["C:/Users/Spencer/Documents/Code/WATO/wato/node_modules/@react-native-elements/base/dist/FAB/index.js"],"names":["FAB"],"mappings":"AAAA,SAASA,GAAT;AACA,SAASA,GAAT","sourcesContent":["import { FAB } from './FAB';\nexport { FAB };\n"]},"metadata":{},"sourceType":"module"}

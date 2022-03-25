@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { Text } from \"./Text\";\nexport { Text };","map":{"version":3,"sources":["C:/Users/Spencer/Documents/Code/WATO/wato/node_modules/@react-native-elements/base/dist/Text/index.js"],"names":["Text"],"mappings":"AAAA,SAASA,IAAT;AACA,SAASA,IAAT","sourcesContent":["import { Text } from './Text';\nexport { Text };\n"]},"metadata":{},"sourceType":"module"}

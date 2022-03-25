@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { Chip } from \"./Chip\";\nexport { Chip };","map":{"version":3,"sources":["C:/Users/Spencer/Documents/Code/WATO/wato/node_modules/@react-native-elements/base/dist/Chip/index.js"],"names":["Chip"],"mappings":"AAAA,SAASA,IAAT;AACA,SAASA,IAAT","sourcesContent":["import { Chip } from './Chip';\nexport { Chip };\n"]},"metadata":{},"sourceType":"module"}

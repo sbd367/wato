@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { Icon } from \"./Icon\";\nexport { Icon };","map":{"version":3,"sources":["C:/Users/Spencer/Documents/Code/WATO/wato/node_modules/@react-native-elements/base/dist/Icon/index.js"],"names":["Icon"],"mappings":"AAAA,SAASA,IAAT;AACA,SAASA,IAAT","sourcesContent":["import { Icon } from './Icon';\nexport { Icon };\n"]},"metadata":{},"sourceType":"module"}
