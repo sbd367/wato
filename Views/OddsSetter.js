@@ -1,24 +1,48 @@
 import { View, StyleSheet } from "react-native";
-import { PickerIOS } from "@react-native-picker/picker";
-import { Text } from "react-native-elements";
+import { Button, Card, ListItem } from "react-native-elements";
 import { useState } from "react";
+import axios from "axios";
 const OddsSetter = () => {
     const [odds, setOdds] = useState(0);
+    const [users, setUsers] = useState([]);
+    const [usersLoaded, setUsersLoaded] = useState(false);
+    const getUsers = () => {
+        console.log('runs')
+        axios.get('http://05e3-67-4-153-189.ngrok.io/api/v1/user')
+        .then(res => {
+            if(usersLoaded === false){
+                let results = res.data;
+                results.forEach(res => {
+                    console.log(res)
+                    setUsers(user => ([
+                        ...user,
+                        res
+                    ]));
+                });
+                setUsersLoaded(true);
+            }
+        });
+    }
+    const addFriend = (userId) => {
+        //POST request for friend invite.
+    }
     return(
         <View>
-            <Text style={styles.topText} h4 h4Style={{color: 'black'}}>Enter a bet and set the odds.</Text>
-            <PickerIOS
-            selectedValue={odds}
-            style={styles.selection}
-            onValueChange={(itemValue, ind) => {setOdds(parseInt(itemValue))}}
-            >
-                <PickerIOS.Item label='0' value={0}/>
-                <PickerIOS.Item label='1' value={1}/>
-                <PickerIOS.Item label='2' value={2}/>
-                <PickerIOS.Item label='3' value={3}/>
-                <PickerIOS.Item label='4' value={4}/>
-                <PickerIOS.Item label='5' value={5}/>
-            </PickerIOS>
+            <Card>
+                {
+                    users.map((user, ind) => (
+                        <ListItem
+                            key={ind}
+                            title='this'
+                            subtitle={`W:${user.wins} L:${user.loss}`}
+                            bottomDivider
+                            onPress={addFriend(user)}
+                        />
+                    ))
+                }
+                <Button title='press for users' onPress={getUsers}/>
+                <Button title='Add Friend' onPress={addFriend}/>
+            </Card>
         </View>
     );
 }

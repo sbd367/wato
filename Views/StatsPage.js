@@ -10,7 +10,7 @@ const StatsPage = (props) => {
     const [wins, setWins] = useState(0);
     const [loss, setLoss] = useState(0);
     const getStats = () => {
-       axios.get('http://localhost:8080/api/v1/user').then(res => {
+       axios.get('http://05e3-67-4-153-189.ngrok.io/api/v1/user').then(res => {
            console.log(gState);
            let win = res.data[0].wins,
             losses = res.data[0].loss;
