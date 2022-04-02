@@ -2,7 +2,7 @@
   "packagerPort": 19000,
   "packagerPid": null,
   "devToolsPort": 19002,
-  "expoServerPort": 19000,
+  "expoServerPort": null,
   "webpackServerPort": 19006,
   "expoServerNgrokUrl": "https://c6-zei.anonymous.wato.exp.direct",
   "packagerNgrokUrl": "https://c6-zei.anonymous.wato.exp.direct",

@@ -14,6 +14,7 @@ import LoginModal from './Views/loginModal';
 export default function App() {
   const gState = useContext(GlobalState);
   const [page, setPage] = useState(0);
+  
 
   const toggleOverlay = () => {
     isUserLoggedIn ? setLoggedIn(false) : setLoggedIn(true);
@@ -29,7 +30,7 @@ export default function App() {
           />
           <StatusBar style="auto" />
           <View style={styles.topContainer}>
-            {page === 0 && <StatsPage user={{username: gState.user.username, password: gState.user.password}}/>}
+            {page === 0 && <StatsPage/>}
             {page === 1 && <OddsSetter/>}
             {page === 2 && <BetSetter/>}
           </View>
