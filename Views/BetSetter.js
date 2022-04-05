@@ -8,16 +8,22 @@ const BetSetter = () => {
     const [bet, setBet] = useState('');
     const [wager, setWager] = useState(0);
     const [user, setUser] = useState({});
+    const [users, setUsers] = useState([]);
+    const [opponent, setOpponent] = useState("");
 
     useEffect(() => {
-        axios.get('http://localhost:8080/api/v1/user')
+        axios.get('http://05e3-67-4-153-189.ngrok.io/api/v1/user')
         .then(res => {
             let results = res.data[0];
             setUser(user => ({
                 ...user,
                 ...results
             }));
-            console.log(user);
+            setUsers(user => [
+                ...user,
+                ...res.data
+            ]);
+
         });
     }, []);
 
@@ -25,10 +31,10 @@ const BetSetter = () => {
         return setBet(value);
     }
     const makeTheBet = () => {
-        axios.post('http://localhost:8080/api/v1/bet', {
+        axios.post('http://05e3-67-4-153-189.ngrok.io/api/v1/bet', {
             betName: bet,
             wagers: [wager, 0],
-            user: user
+            users: [user.id, opponent]
         }).then(res => {
             console.log(res);
         }).catch(error => {
@@ -54,6 +60,13 @@ const BetSetter = () => {
                     <Picker.Item label="7" value={7}/>
                 </Picker>
                 <Text h3>Who are you betting?</Text>
+                <Picker onValueChange={(itemValue, ind) => {setOpponent(itemValue)}}>
+                    {
+                        users.map((u, i) => (
+                            <Picker.Item key={i} label={u.username} value={u.id}/>
+                        ))
+                    }
+                </Picker>
                 <Button title="Set the odds" onPress={makeTheBet}/>
             </Card>
         </View>

@@ -9,33 +9,15 @@ import BetSetter from './Views/BetSetter';
 import { GlobalStateProvidor } from './store/stateStore';
 import GlobalState from './store/stateStore';
 import axios from 'axios';
+import LoginModal from './Views/loginModal';
 
 export default function App() {
   const gState = useContext(GlobalState);
   const [page, setPage] = useState(0);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [loggedIn, setLoggedIn] = useState(false);
+  
 
   const toggleOverlay = () => {
     isUserLoggedIn ? setLoggedIn(false) : setLoggedIn(true);
-  }
-  const createNewUser = () => {
-    axios.post('http://localhost:8080/api/v1/user', {
-      username: username,
-      password: password
-    }).then(res => console.log(res));
-  }
-  const loginUser = () => {
-    axios.get('http://localhost:8080/api/v1/user')
-    .then(res => {
-      console.log(res.status === 200)
-      if(res.status === 200){
-        setLoggedIn(true);
-        console.log('setsUser')
-        gState.setTheUser(res.data[0]);
-      }
-    })
   }
 
   return (
@@ -48,29 +30,21 @@ export default function App() {
           />
           <StatusBar style="auto" />
           <View style={styles.topContainer}>
-          {page === 0 && <StatsPage user={{username: username, password: password}}/>}
-          {page === 1 && <OddsSetter/>}
-          {page === 2 && <BetSetter/>}
+            {page === 0 && <StatsPage/>}
+            {page === 1 && <OddsSetter/>}
+            {page === 2 && <BetSetter/>}
           </View>
           <View style={styles.bottomContainer}>
-          <ButtonGroup
-            style={styles.buttonRow}
-            buttons={['Stats', 'Bet', 'Bounty']}
-            selectedIndex={page}
-            onPress={(val) => {
-              setPage(val);
-            }}
-          />
+            <ButtonGroup
+              style={styles.buttonRow}
+              buttons={['Stats', 'Bet', 'Bounty']}
+              selectedIndex={page}
+              onPress={(val) => {
+                setPage(val);
+              }}
+            />
           </View>
-          <Overlay isVisible={!loggedIn}>
-            <Card>
-              <Text>Hey there, noticed you havent made an account yet...</Text>
-              <Input onChangeText={(val, ind)=>setUsername(val)} label='username' value={username}/>
-              <Input onChangeText={(val, ind)=>setPassword(val)} label='password' value={password}/>
-              <Button title='Login' onPress={loginUser}/>
-              <Button title='Create an account' onPress={createNewUser}/>
-            </Card>
-          </Overlay>
+          <LoginModal/>
         </GlobalStateProvidor>
       </SafeAreaProvider>
     </View>
