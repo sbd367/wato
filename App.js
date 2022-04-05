@@ -1,14 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { useContext, useState } from 'react';
-import {BottomSheet, Button, ButtonGroup, Card, Header, Input, Overlay, SearchBar} from 'react-native-elements';
+import {ButtonGroup, Header} from 'react-native-elements';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import OddsSetter from './Views/OddsSetter';
 import StatsPage from './Views/StatsPage';
 import BetSetter from './Views/BetSetter';
 import { GlobalStateProvidor } from './store/stateStore';
 import GlobalState from './store/stateStore';
-import axios from 'axios';
 import LoginModal from './Views/loginModal';
 
 export default function App() {

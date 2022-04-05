@@ -15,7 +15,7 @@ export const GlobalStateProvidor = (props) => {
     const [userToken, setUserToken] = useState("");
     const [userData, setUserData] = useState({});
     const logIn = (username, password) => {
-        axios.get("http://localhost:8081/api/v1/user/login", {
+        axios.get("Wato-env.eba-miaw9we4.us-east-1.elasticbeanstalk.com/api/v1/user/login", {
             params: {
                 username: username,
                 password: password
@@ -33,9 +33,10 @@ export const GlobalStateProvidor = (props) => {
     const logOut = (user) => {
         //POST req to user auth
         setIsLoggedIn(false);
+        setUserData({});
     }
     const createUser = (username, password) => {
-        axios.post("http://localhost:8081/api/v1/user", {
+        axios.post("Wato-env.eba-miaw9we4.us-east-1.elasticbeanstalk.com/api/v1/user", {
             username: username,
             password: password
         }).then(res => {
